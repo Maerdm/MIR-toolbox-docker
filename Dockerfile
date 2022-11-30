@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FROM ubuntu:21.04
+FROM ubuntu:22.04
 
 # Export env settings
 ENV TERM=xterm
@@ -18,6 +18,9 @@ COPY apt-packages.txt /tmp/
 RUN apt-get update \
     && xargs -a /tmp/apt-packages.txt apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc \
+libsndfile1 
 
 COPY requirements.txt /tmp/
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt

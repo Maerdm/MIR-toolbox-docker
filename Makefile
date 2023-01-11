@@ -3,8 +3,8 @@
 all: build push
 
 build:
-	docker build -t mtgupf/mir-toolbox .
+	docker build -t mtgupf/mir-toolbox_librosa .
 
 push:
-	docker push mtgupf/mir-toolbox
+	docker push mtgupf/mir-toolbox_librosa
 
